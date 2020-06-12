@@ -10,6 +10,9 @@
     ]
   },
   "require": {
-    "phpunit/phpunit": "^9.2"
+    "phpunit/phpunit": "^9.2",
+    "fzaninotto/faker": "^1.9",
+    "symfony/serializer": "^5.1",
+    "symfony/property-access": "^5.1"
   }
 }
