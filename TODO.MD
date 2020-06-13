@@ -13,15 +13,10 @@
      - [x] GetById($id)
      - [x] Search ($genre,$title)
      - [x] This week playing($weekNumber)
-     - [ ] Create(Movie)
-     - [ ] Update(Movie)
-     - [ ] Delete(Movie)
- - [O] Repository
- - [?] Hydrator
- - [ ] OpenAPI Yaml file
-
-
- - [ ] Project init
-     - [x] Schema
-     - [ ] Migration command
-     - [ ] Seeding
+     - [x] Create(Movie)
+     - [x] Update(Movie)
+     - [x] Delete(Movie)
+ - [x] Repository
+ - [x] Hydrator
+ - [x] Schema
+ - [ ] Seeding

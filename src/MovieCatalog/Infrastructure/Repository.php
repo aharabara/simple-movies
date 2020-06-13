@@ -114,5 +114,12 @@ class Repository
         $statement->execute();
     }
 
+    public function delete(MovieId $movieId)
+    {
+        $statement = $this->pdo->prepare("DELETE FROM movies WHERE movie_id = :movie_id");
+        $statement->bindValue(":movie_id", $movieId);
+        $statement->execute();
+    }
+
 
 }

@@ -5,6 +5,7 @@ namespace Application\MovieCatalog\Application;
 
 
 use Application\MovieCatalog\Application\Command\CreateMovieCommand;
+use Application\MovieCatalog\Application\Command\DeleteMovieCommand;
 use Application\MovieCatalog\Application\Command\UpdateMovieCommand;
 use Application\MovieCatalog\Application\DTO\MovieDTO;
 use Application\MovieCatalog\Application\Query\GetMovieByIdQuery;
@@ -79,9 +80,14 @@ class Service /* @todo SPLIT INTO HANDLERS */
         return $movie->movieId();
     }
 
-    public function delete(Command\DeleteMovieCommand $query): ?Movie
+    public function delete(DeleteMovieCommand $query): string
     {
-
+        $movie = $this->repository->getById($query->getMovieId());
+        if (null === $movie) {
+            throw new \DomainException("Movie under id '{$query->getMovieId()}' was not found.");
+        }
+        $this->repository->delete($movie->movieId());
+        return $movie->movieId();
     }
 
 }
