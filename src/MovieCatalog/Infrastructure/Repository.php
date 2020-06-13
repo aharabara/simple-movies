@@ -98,12 +98,20 @@ class Repository
 
     public function generateId(): MovieId
     {
-        return new MovieId('');
+        return new MovieId(str_replace(".", "-", uniqid("movie-", true)));
     }
 
     public function save(Movie $movie): void
     {
-
+        $statement = $this->pdo->prepare("
+        REPLACE INTO movies (movie_id, title, genre, year, release_date, runtime, suitability_rating) 
+        VALUES (:movie_id, :title, :genre, :year, :release_date, :runtime, :suitability_rating);
+        ");
+        $data = $this->hydrator->extract($movie);
+        foreach ($data as $field => $value) {
+            $statement->bindValue(":{$field}", $value);
+        }
+        $statement->execute();
     }
 
 

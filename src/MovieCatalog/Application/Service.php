@@ -74,7 +74,7 @@ class Service /* @todo SPLIT INTO HANDLERS */
             throw new \DomainException("Movie under id '{$query->getMovieId()}' was not found.");
         }
 
-        $movie = $this->transformer->fromDTO($query, $this->repository->generateId());
+        $movie = $this->transformer->fromDTO($query, $movie->movieId());
         $this->repository->save($movie);
         return $movie->movieId();
     }

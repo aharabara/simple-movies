@@ -39,7 +39,7 @@ class Transformer
             new Year($dto->getYear()),
             new Runtime($dto->getRuntime()),
             new SuitabilityRating($dto->getSuitabilityRating()),
-            new ReleaseDate($dto->getReleaseDate())
+            new ReleaseDate($dto->getReleaseDate()->format(\DateTimeInterface::ATOM))
         );
     }
 }

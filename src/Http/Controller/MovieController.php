@@ -2,6 +2,8 @@
 
 namespace Application\Http\Controller;
 
+use Application\MovieCatalog\Application\Command\CreateMovieCommand;
+use Application\MovieCatalog\Application\Command\UpdateMovieCommand;
 use Application\MovieCatalog\Application\Query\GetMovieByIdQuery;
 use Application\MovieCatalog\Application\Query\SearchMovieQuery;
 use Application\MovieCatalog\Application\Service;
@@ -63,12 +65,39 @@ class MovieController
 
     public function create(Request $request, Response $response): Response
     {
-        return $response;
+        return $response->withJson(
+            $this->serializer->normalize(
+                $this->movieService->create(
+                    new CreateMovieCommand(
+                        $request->getParam('title'),
+                        $request->getParam('genre'),
+                        $request->getParam('year'),
+                        $request->getParam('runtime'),
+                        $request->getParam('suitabilityRating'),
+                        $request->getParam('releaseDate'),
+                    )
+                )
+            )
+        );
     }
 
     public function update(Request $request, Response $response): Response
     {
-        return $response;
+        return $response->withJson(
+            $this->serializer->normalize(
+                $this->movieService->update(
+                    new UpdateMovieCommand(
+                        $request->getParam('title'),
+                        $request->getParam('genre'),
+                        $request->getParam('year'),
+                        $request->getParam('runtime'),
+                        $request->getParam('suitabilityRating'),
+                        $request->getParam('releaseDate'),
+                        $request->getAttribute('movieId'),
+                    )
+                )
+            )
+        );
     }
 
 }
