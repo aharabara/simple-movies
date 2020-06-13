@@ -2,17 +2,14 @@
 
 namespace Utility;
 
-use Application\MovieCatalog\Application\Service;
 use Application\MovieCatalog\Domain\Genre;
 use Application\MovieCatalog\Domain\Movie;
 use Application\MovieCatalog\Domain\MovieId;
+use Application\MovieCatalog\Domain\ReleaseDate;
 use Application\MovieCatalog\Domain\Runtime;
 use Application\MovieCatalog\Domain\SuitabilityRating;
 use Application\MovieCatalog\Domain\Title;
 use Application\MovieCatalog\Domain\Year;
-use Application\MovieCatalog\Infrastructure\Repository;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 
 class Factory
 {
@@ -31,7 +28,8 @@ class Factory
             new Genre($this->faker->randomElement(Genre::allowedValues())),
             new Year(2009),
             new Runtime(150),
-            new SuitabilityRating($this->faker->randomElement(SuitabilityRating::allowedValues()))
+            new SuitabilityRating($this->faker->randomElement(SuitabilityRating::allowedValues())),
+            new ReleaseDate()
         );
     }
 }

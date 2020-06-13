@@ -7,41 +7,45 @@ namespace Application\MovieCatalog\Domain;
 class Movie
 {
     /** @var MovieId */
-    private $id;
+    private $movieId;
     /** @var Title  */
     private $title;
     /** @var Genre */
     private $genre;
     /** @var Year  */
     private $year;
+    /** @var Year  */
+    private $releaseDate;
     /** @var Runtime */
     private $runtime;
     /** @var SuitabilityRating  */
     private $suitabilityRating;
 
     public function __construct(
-        MovieId $id,
+        MovieId $movieId,
         Title $title,
         Genre $genre,
         Year $year,
         Runtime $runtime,
-        SuitabilityRating $suitabilityRating
+        SuitabilityRating $suitabilityRating,
+        ReleaseDate $releaseDate
     )
     {
-        $this->id = $id;
+        $this->movieId = $movieId;
         $this->title = $title;
         $this->genre = $genre;
         $this->year = $year;
         $this->runtime = $runtime;
         $this->suitabilityRating = $suitabilityRating;
+        $this->releaseDate = $releaseDate;
     }
 
     /**
      * @return MovieId
      */
-    public function id(): MovieId
+    public function movieId(): MovieId
     {
-        return $this->id;
+        return $this->movieId;
     }
 
     /**
@@ -85,6 +89,14 @@ class Movie
     }
 
     /**
+     * @return ReleaseDate
+     */
+    public function releaseDate(): ReleaseDate
+    {
+        return $this->releaseDate;
+    }
+
+    /**
      * @param Title $title
      */
     public function setTitle(Title $title): void
@@ -122,6 +134,14 @@ class Movie
     public function setSuitabilityRating(SuitabilityRating $suitabilityRating): void
     {
         $this->suitabilityRating = $suitabilityRating;
+    }
+
+    /**
+     * @param ReleaseDate $releaseDate
+     */
+    public function setReleaseDate(ReleaseDate $releaseDate): void
+    {
+        $this->releaseDate = $releaseDate;
     }
 
 }

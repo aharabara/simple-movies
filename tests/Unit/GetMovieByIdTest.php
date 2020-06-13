@@ -17,16 +17,16 @@ class GetMovieByIdTest extends TestCase
         $transformer = new Transformer();
 
         $movie = $factory->createMovie();
-        $query = new GetMovieByIdQuery($movie->id());
+        $query = new GetMovieByIdQuery($movie->movieId());
 
         $repository = $this->getMockBuilder(Repository::class)->disableOriginalConstructor()->getMock();
 
         $repository
             ->method('getById')
-            ->with($query->id())
+            ->with($query->getMovieId())
             ->willReturn($movie);
 
-        $service = new Service($repository, $transformer);
+        $service = new Service($repository);
 
         self::assertEquals($transformer->toDTO($movie), $service->getById($query));
     }

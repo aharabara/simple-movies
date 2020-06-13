@@ -1,11 +1,12 @@
 <?php
 
-namespace App\MovieCatalog\Adapter;
+namespace Application\MovieCatalog\Infrastructure;
 
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -20,7 +21,9 @@ class Hydrator
         $this->serializer = new Serializer(
             [
                 new ArrayDenormalizer(),
-                new PropertyNormalizer(null, null, new PropertyInfoExtractor()), new ObjectNormalizer()
+                new AbstractValueNormalizer(),
+                new DateNormalizer(),
+                new PropertyNormalizer(null, new CamelCaseToSnakeCaseNameConverter(), new PropertyInfoExtractor()), new ObjectNormalizer()
             ],
         );
     }

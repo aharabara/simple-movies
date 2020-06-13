@@ -2,6 +2,8 @@
 
 namespace Application\MovieCatalog\Application\Command;
 
-class CreateMovieCommand
+use Application\MovieCatalog\Application\DTO\AbstractMovieDTO;
+
+class CreateMovieCommand extends AbstractMovieDTO
 {
 }

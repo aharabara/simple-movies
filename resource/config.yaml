@@ -1,0 +1,8 @@
+database:
+  path : '../database.sqlite'
+  username : 'user-1'
+  password : 'password%#@@'
+  per-page : 10
+
+logger:
+  path : '../var/logs/'

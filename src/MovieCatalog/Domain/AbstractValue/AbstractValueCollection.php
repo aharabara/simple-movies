@@ -47,5 +47,9 @@ abstract class AbstractValueCollection implements \Iterator
         return key($this->items) !== null;
     }
 
+    public function count():int{
+        return count($this->items);
+    }
+
     abstract public static function getCollectionItemClassName(): string;
 }

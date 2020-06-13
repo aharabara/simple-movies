@@ -2,6 +2,9 @@
 
 namespace Application\MovieCatalog\Application\Command;
 
-class UpdateMovieCommand
+use Application\MovieCatalog\Application\DTO\AbstractMovieDTO;
+use Application\MovieCatalog\Application\DTO\MovieDTO;
+
+class UpdateMovieCommand extends MovieDTO
 {
 }

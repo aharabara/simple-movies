@@ -12,7 +12,7 @@ class GetMovieByIdQuery
         $this->movieId = $movieId;
     }
 
-    public function id():string
+    public function getMovieId():string
     {
         return $this->movieId;
     }

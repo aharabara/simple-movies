@@ -13,4 +13,9 @@ class MovieCollection extends AbstractValueCollection
     {
         return Movie::class;
     }
+
+    public function empty(): bool
+    {
+        return $this->count() === 0;
+    }
 }
